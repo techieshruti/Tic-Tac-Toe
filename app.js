@@ -22,13 +22,13 @@ heading1.style.fontSize = "3rem";
 const startscreen=document.createElement("div");
 container.appendChild(startscreen);
 startscreen.style.margin="2rem";
+startscreen.style.fontSize="1.3rem"
 // startscreen.style.display="none";
 
 // paragraph
 const para = document.createElement("p");
 startscreen.appendChild(para);
 para.textContent=" Tic-Tac-Toe is a classic 2-player strategy game where players take turns placing their symbol (X or O) on a 3x3 grid. The goal is to be the first to get three of your symbols in a row — horizontally, vertically, or diagonally.";
-para.style.fontSize="1.5rem"
 
 const heading2=document.createElement("h2");
 startscreen.appendChild(heading2);
@@ -38,7 +38,6 @@ heading2.style.margin="1rem 0 1rem 2rem"
 // unordered list
 const ruleList =document.createElement("ul");
 startscreen.appendChild(ruleList);
-ruleList.style.fontSize="1.5rem";
 ruleList.style.margin="0 0 2rem 4rem"
 ruleList.style.lineHeight="2.3rem"
 ruleList.innerHTML=`
@@ -50,24 +49,36 @@ ruleList.innerHTML=`
   <li>If all cells are filled without a winner, it's a draw.</li>
 `
 // userchoice
-const inputDiv=document.createElement("div");
-startscreen.appendChild(inputDiv);
+const userChoiceText = document.createElement("p");
+userChoiceText.textContent = "Player 1: Choose your symbol";
+startscreen.appendChild(userChoiceText);
 
-const label=document.createElement("label");
-inputDiv.appendChild(label);
-label.textContent="What do you want to choose `X` or `O`? ";
-label.style.fontSize="1.5rem";
-const choice=document.createElement("input");
-inputDiv.appendChild(choice);
-choice.placeholder="Choice";
-choice.style.padding="1rem";
-choice.style.borderRadius="0.5rem";
-choice.style.border="none";
-choice.style.width="5rem"
+const buttonX = document.createElement("button");
+buttonX.textContent = "X";
+startscreen.appendChild(buttonX);
+styleSymbolButton(buttonX);
+
+const buttonO = document.createElement("button");
+buttonO.textContent = "O";
+startscreen.appendChild(buttonO);
+styleSymbolButton(buttonO);
+
+function styleSymbolButton(btn){
+    btn.style.padding="1rem 2rem";
+    btn.style.margin="1rem";
+    btn.style.fontSize="1.5rem";
+    btn.style.border="none";
+    btn.style.borderRadius="1rem";
+    btn.style.cursor="pointer";
+    btn.style.backgroundColor="#253d63";
+    btn.style.color="#fff";
+
+    
+}
 
 
 // startgame button
-const btn=document.createElement("button");
+// const btn=document.createElement("button");
 startscreen.appendChild(btn);
 btn.textContent="Start Game";
 btn.style.marginTop="1rem"
