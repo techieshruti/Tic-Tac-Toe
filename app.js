@@ -14,31 +14,46 @@ const heading1 = document.createElement("h1");
 container.appendChild(heading1);
 heading1.textContent = "Welcome to TIC-TAC-TOE";
 heading1.style.marginTop = "2rem";
-heading1.style.fontSize = "4rem";
+heading1.style.fontSize = "3rem";
 
 // =============== start screen ============
 // =========================================
  
 const startscreen=document.createElement("div");
 container.appendChild(startscreen);
+startscreen.style.margin="2rem"
 
 // paragraph
 const para = document.createElement("p");
 startscreen.appendChild(para);
 para.textContent=" Tic-Tac-Toe is a classic 2-player strategy game where players take turns placing their symbol (X or O) on a 3x3 grid. The goal is to be the first to get three of your symbols in a row — horizontally, vertically, or diagonally.";
-para.style.fontSize="2rem"
+para.style.fontSize="1.8rem"
 para.style.margin="2rem"
 
 const heading2=document.createElement("h2");
 startscreen.appendChild(heading2);
-// 
-const ul =document.createElement("ul");
-startscreen.appendChild(ul);
-const li=document.createElement("li");
-startscreen.appendChild(li);
-li.style.margin="3rem"
-li.style.fontSize="1.5rem";
-li.textContent="The game is for 2 players.";
+heading2.textContent="🧩 Game Rules";
+heading2.style.marginLeft="2rem"
+
+// unordered list
+const ruleList =document.createElement("ul");
+startscreen.appendChild(ruleList);
+ruleList.style.fontSize="1.5rem";
+ruleList.style.marginLeft="4rem"
+ruleList.style.lineHeight="2.3rem"
+ruleList.innerHTML=`
+<li>The game is for 2 players.</li>
+  <li>Player 1 chooses either X or O.</li>
+  <li>Player 2 is automatically assigned the remaining symbol.</li>
+  <li>Players take alternate turns placing their symbol in an empty cell.</li>
+  <li>The first player to align three of their symbols wins the game.</li>
+  <li>If all cells are filled without a winner, it's a draw.</li>
+`
+// startgame button
+const btn=document.createElement("button");
+startscreen.appendChild(btn);
+btn.textContent="Start Game";
+btn.style.padding="1rem";
 
 // =============== Game screen =============
 // =========================================
