@@ -202,12 +202,38 @@ if(currentPlayer === "X"){
 }
 
 // winning combinations
-const winCombo = [[0,1,2], [0,3,6], [0,4,8], [1,4,7], [2,4,6], [2,5,8], [3,4,5],[6,7,8]];
+function checkWinner(){
+    const winCombo = [[0,1,2], [0,3,6], [0,4,8], [1,4,7], [2,4,6], [2,5,8], [3,4,5],[6,7,8]];
+
+    for (let i = 0; i < winCombos.length; i++) {
+    const combo = winCombos[i];       // e.g., [0, 1, 2]
+    const a = combo[0];
+    const b = combo[1];
+    const c = combo[2];
+
+    if (board[a] === currentPlayer &&
+        board[b] === currentPlayer &&
+        board[c] === currentPlayer) {
+        return true; // currentPlayer has won
+    }
+
+return false; // no win found
+}
 
 // winner
-// if(checkWinner()){
-//     alert(`Player ${currentPlayer} wins.`);
-//     gameActive=false;
-//     return;
-// }
+if(checkWinner()){
+    alert(`Player ${currentPlayer} wins.`);
+    gameActive=false;
+    return;
 }
+
+// draw
+if (!board.includes("")) {
+    alert("It's a draw!");
+    gameActive = false;
+    return;
+  }
+
+  // Switch player
+  currentPlayer = currentPlayer === "X" ? "O" : "X";
+}}
