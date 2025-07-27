@@ -36,8 +36,9 @@ for(let i=0; i<9; i++){
 
     cell.style.display="flex";
     cell.style.justifyContent="center";
-    cell.style.backgroundColor="#751210";
+    cell.style.backgroundColor="#851e1cff";
     cell.style.borderRadius="1rem";
     cell.style.cursor="pointer"
+    cell.style.boxShadow="2px 2px 10px #943a39ff"
 }
     
