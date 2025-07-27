@@ -13,16 +13,3 @@ container.style.flexDirection="column"
 const heading1 = document.createElement("h1");
 container.appendChild(heading1);
 heading1.textContent="TIC-TAC-TOE"
-
-// game grid
-const gridBox = document.createElement("div");
-container.appendChild(gridBox);
-gridBox.style.display="grid";
-gridBox.style.gridTemplateColumns="1fr 1fr 1fr";
-gridBox.style.gridTemplateRows="1fr 1fr 1fr";
-gridBox.style.backgroundColor="red";
-gridBox.style.padding="1rem"
-gridBox.style.maxWidth="500px"
-gridBox.style.margin="1rem"
-gridBox.style.width = "100%";
-gridBox.style.aspectRatio = "1 / 1";
