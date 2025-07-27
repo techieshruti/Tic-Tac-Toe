@@ -21,19 +21,19 @@ heading1.style.fontSize = "3rem";
  
 const startscreen=document.createElement("div");
 container.appendChild(startscreen);
-startscreen.style.margin="2rem"
+startscreen.style.margin="2rem";
+startscreen.style.display="none";
 
 // paragraph
 const para = document.createElement("p");
 startscreen.appendChild(para);
 para.textContent=" Tic-Tac-Toe is a classic 2-player strategy game where players take turns placing their symbol (X or O) on a 3x3 grid. The goal is to be the first to get three of your symbols in a row — horizontally, vertically, or diagonally.";
 para.style.fontSize="1.8rem"
-para.style.margin="2rem"
 
 const heading2=document.createElement("h2");
 startscreen.appendChild(heading2);
 heading2.textContent="🧩 Game Rules";
-heading2.style.marginLeft="2rem"
+heading2.style.margin="1rem 0 1rem 2rem"
 
 // unordered list
 const ruleList =document.createElement("ul");
@@ -53,14 +53,43 @@ ruleList.innerHTML=`
 const btn=document.createElement("button");
 startscreen.appendChild(btn);
 btn.textContent="Start Game";
-btn.style.padding="1rem";
+btn.style.marginTop="1rem"
+btn.style.padding="1rem 2rem";
+btn.style.fontSize="18px";
+btn.style.borderRadius="1.5rem";
+btn.style.border="none";
+btn.style.backgroundColor="#253d63"
+btn.style.color="#fff";
+btn.style.cursor="pointer";
+btn.style.boxShadow="1px 1px 15px #1a3766ff";
+
+btn.addEventListener("mouseover", ()=>{
+   btn.style.backgroundColor="green";
+   btn.style.transition="0.5s ease-in";
+   btn.style.boxShadow="1px 1px 15px #113f0cff"
+});
+
+btn.addEventListener("mouseout", ()=>{
+   btn.style.backgroundColor="#253d63";
+   btn.style.transition="0.5s ease-in";
+   btn.style.boxShadow="1px 1px 15px #1a3766ff"
+});
+
+btn.addEventListener("click", ()=>{
+   startscreen.style.display="none"; 
+gameScreen.style.display="block";
+});
 
 // =============== Game screen =============
 // =========================================
 
+const gameScreen = document.createElement("div");
+container.appendChild(gameScreen);
+// gameScreen.style.display="none"
+
 // game grid
 const gridBox = document.createElement("div");
-// container.appendChild(gridBox);
+container.appendChild(gridBox);
 gridBox.style.display = "grid";
 gridBox.style.gridTemplateColumns = "1fr 1fr 1fr";
 gridBox.style.gridTemplateRows = "1fr 1fr 1fr";
