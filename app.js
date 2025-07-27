@@ -19,36 +19,37 @@ heading1.style.fontSize = "3rem";
 
 // =============== start screen ============
 // =========================================
- 
-const startscreen=document.createElement("div");
+
+const startscreen = document.createElement("div");
 container.appendChild(startscreen);
-startscreen.style.marginLeft="2rem";
-startscreen.style.fontSize="1.5rem"
-startscreen.style.display="none";
+startscreen.style.marginLeft = "2rem";
+startscreen.style.fontSize = "1.5rem";
+startscreen.style.display = "none";
 
 // paragraph
 const para = document.createElement("p");
 startscreen.appendChild(para);
-para.textContent=" Tic-Tac-Toe is a classic 2-player strategy game where players take turns placing their symbol (X or O) on a 3x3 grid. The goal is to be the first to get three of your symbols in a row — horizontally, vertically, or diagonally.";
+para.textContent =
+  " Tic-Tac-Toe is a classic 2-player strategy game where players take turns placing their symbol (X or O) on a 3x3 grid. The goal is to be the first to get three of your symbols in a row — horizontally, vertically, or diagonally.";
 
-const heading2=document.createElement("h2");
+const heading2 = document.createElement("h2");
 startscreen.appendChild(heading2);
-heading2.textContent="🧩 Game Rules";
-heading2.style.margin="1rem 0 1rem 2rem"
+heading2.textContent = "🧩 Game Rules";
+heading2.style.margin = "1rem 0 1rem 2rem";
 
 // unordered list
-const ruleList =document.createElement("ul");
+const ruleList = document.createElement("ul");
 startscreen.appendChild(ruleList);
-ruleList.style.margin="0 0 2rem 4rem"
-ruleList.style.lineHeight="2.3rem"
-ruleList.innerHTML=`
+ruleList.style.margin = "0 0 2rem 4rem";
+ruleList.style.lineHeight = "2.3rem";
+ruleList.innerHTML = `
 <li>The game is for 2 players.</li>
   <li>Player 1 chooses either X or O.</li>
   <li>Player 2 is automatically assigned the remaining symbol.</li>
   <li>Players take alternate turns placing their symbol in an empty cell.</li>
   <li>The first player to align three of their symbols wins the game.</li>
   <li>If all cells are filled without a winner, it's a draw.</li>
-`
+`;
 // userchoice
 const userChoiceText = document.createElement("p");
 userChoiceText.textContent = "Player 1: Choose your symbol";
@@ -64,53 +65,57 @@ buttonO.textContent = "O";
 startscreen.appendChild(buttonO);
 styleSymbolButton(buttonO);
 
-let player1 ="";
-let player2 ="";
+let player1 = "";
+let player2 = "";
 
-buttonX.addEventListener("click", ()=>{
-    const playerChoice = e.target.textContent.toUpperCase();
-    player1 = playerChoice;
-    player2 = playerChoice === "X" ? "X" : "O";
+buttonX.addEventListener("click", (e) => {
+  const playerChoice = e.target.textContent.toUpperCase();
+  player1 = playerChoice;
+  player2 = playerChoice === "X" ? "X" : "O";
 });
-buttonO.addEventListener("click", ()=>{
-    const playerChoice = e.target.textContent.toUpperCase();
-    player1 = playerChoice;
-    player2 = playerChoice === "X" ? "X" : "O";
+buttonO.addEventListener("click", (e) => {
+  const playerChoice = e.target.textContent.toUpperCase();
+  player1 = playerChoice;
+  player2 = playerChoice === "X" ? "O" : "X";
 });
 
 // buton styles function
-function styleSymbolButton(btn){
-    btn.style.padding="1rem 2rem";
-    btn.style.margin="1rem";
-    btn.style.fontSize="1.2rem";
-    btn.style.border="none";
-    btn.style.borderRadius="1rem";
-    btn.style.cursor="pointer";
-    btn.style.backgroundColor="#253d63";
-    btn.style.color="#fff";
-    btn.style.boxShadow="1px 1px 15px #1a3766ff";
+function styleSymbolButton(btn) {
+  btn.style.padding = "1rem 2rem";
+  btn.style.margin = "1rem";
+  btn.style.fontSize = "1.2rem";
+  btn.style.border = "none";
+  btn.style.borderRadius = "1rem";
+  btn.style.cursor = "pointer";
+  btn.style.backgroundColor = "#253d63";
+  btn.style.color = "#fff";
+  btn.style.boxShadow = "1px 1px 15px #1a3766ff";
 
-    btn.addEventListener("mouseover", ()=>{
-        btn.style.backgroundColor = "green";
-        btn.style.transition="0.5s ease-in";
-   btn.style.boxShadow="1px 1px 15px #113f0cff";
-    });
-    btn.addEventListener("mouseout", ()=>{
-        btn.style.backgroundColor = "#253d63";
-        btn.style.transition="0.5s ease-in";
-   btn.style.boxShadow="1px 1px 15px #1a3766ff";
-    });
+  btn.addEventListener("mouseover", () => {
+    btn.style.backgroundColor = "green";
+    btn.style.transition = "0.5s ease-in";
+    btn.style.boxShadow = "1px 1px 15px #113f0cff";
+  });
+  btn.addEventListener("mouseout", () => {
+    btn.style.backgroundColor = "#253d63";
+    btn.style.transition = "0.5s ease-in";
+    btn.style.boxShadow = "1px 1px 15px #1a3766ff";
+  });
 }
 
 // startgame button
-const btn=document.createElement("button");
+const btn = document.createElement("button");
 startscreen.appendChild(btn);
-btn.textContent="Start Game";
+btn.textContent = "Start Game";
 styleSymbolButton(btn);
 
-btn.addEventListener("click", ()=>{
-   startscreen.style.display="none"; 
-gameScreen.style.display="block";
+btn.addEventListener("click", () => {
+    if(player1 === "" && player2 === ""){
+        alert("Please choose your symbol!!")
+        return;
+    }
+  startscreen.style.display = "none";
+  gameScreen.style.display = "block";
 });
 
 // =============== Game screen =============
@@ -118,11 +123,11 @@ gameScreen.style.display="block";
 
 const gameScreen = document.createElement("div");
 container.appendChild(gameScreen);
-gameScreen.style.width="100%";
-gameScreen.style.height="100vh";
+gameScreen.style.width = "100%";
+gameScreen.style.height = "100vh";
 gameScreen.style.display = "grid";
+gameScreen.style.justifyItems="center"
 // gameScreen.style.display = "none";
-gameScreen.style.justifyContent = "center";
 
 // game grid
 const gridBox = document.createElement("div");
@@ -137,10 +142,9 @@ gridBox.style.width = "100%";
 gridBox.style.aspectRatio = "1 / 1";
 
 // global variable
-let currentPlayer="player1";
-let board= Array(9).fill("");
-let gameActive= true;
-
+let currentPlayer = "player1";
+let board = Array(9).fill("");
+let gameActive = true;
 
 // grid cells
 for (let i = 0; i < 9; i++) {
@@ -153,87 +157,98 @@ for (let i = 0; i < 9; i++) {
   cell.style.backgroundColor = "#851e1cff";
   cell.style.borderRadius = "1rem";
   cell.style.cursor = "pointer";
-  cell.style.fontSize="3rem";
-  cell.style.color="#fff";
+  cell.style.fontSize = "3rem";
+  cell.style.color = "#fff";
   cell.style.boxShadow = "2px 2px 10px #943a39ff";
 
   // icon "O"
   const circle = document.createElement("i");
   cell.appendChild(circle);
-  circle.id=circle;
-  circle.classList.add("fa-solid","fa-o");
-  circle.style.display="none";
+  circle.classList.add("fa-solid", "fa-o");
+  circle.style.display = "none";
 
   // icon "X"
   const cross = document.createElement("i");
   cell.appendChild(cross);
-  cross.id=cross;
-  cross.classList.add("fa-solid","fa-x");
-  cross.style.display="none";
+  cross.classList.add("fa-solid", "fa-x");
+  cross.style.display = "none";
 
-// MouseOver Event
-  cell.addEventListener("mouseover", ()=>{
-    cell.style.backgroundColor="#c39531ff";
-    cell.style.boxShadow="2px 2px 10px #9a7527ff"
-    cell.style.transition="0.5s ease-in";
-    cell.style.color="black";
+  // MouseOver Event
+  cell.addEventListener("mouseover", () => {
+    cell.style.backgroundColor = "#c39531ff";
+    cell.style.boxShadow = "2px 2px 10px #9a7527ff";
+    cell.style.transition = "0.5s ease-in";
+    cell.style.color = "black";
   });
-// MouseOut Event
-  cell.addEventListener("mouseout", ()=>{
-    cell.style.backgroundColor="#851e1cff";
-    cell.style.transition="0.5s ease-in"
-  cell.style.boxShadow = "2px 2px 10px #943a39ff";
-    cell.style.color="#fff";  
-});
+  // MouseOut Event
+  cell.addEventListener("mouseout", () => {
+    cell.style.backgroundColor = "#851e1cff";
+    cell.style.transition = "0.5s ease-in";
+    cell.style.boxShadow = "2px 2px 10px #943a39ff";
+    cell.style.color = "#fff";
+  });
 
-// MouseClick on cell logic
- const index = i;
-// cells are filled
-if(!gameActive || board[index] !== ""){
-    return;
-}
-    board[index]=currentPlayer;
+  // MouseClick on cell logic
+  cell.addEventListener("click", () => {
+    const index = i;
+    // cells are filled
+    if (!gameActive || board[index] !== "") {
+      return;
+    }
+    board[index] = currentPlayer;
 
     // if cells are empty
-if(currentPlayer === "X"){
-    cross.style.display="block";
-}else{
-    circle.style.display="block";
-}
-
-// winning combinations
-function checkWinner(){
-    const winCombo = [[0,1,2], [0,3,6], [0,4,8], [1,4,7], [2,4,6], [2,5,8], [3,4,5],[6,7,8]];
-
-    for (let i = 0; i < winCombos.length; i++) {
-    const combo = winCombos[i];       // e.g., [0, 1, 2]
-    const a = combo[0];
-    const b = combo[1];
-    const c = combo[2];
-
-    if (board[a] === currentPlayer &&
-        board[b] === currentPlayer &&
-        board[c] === currentPlayer) {
-        return true; // currentPlayer has won
+    if (currentPlayer === "X") {
+      cross.style.display = "block";
+    } else {
+      circle.style.display = "block";
     }
 
-return false; // no win found
+    // winning combinations
+    function checkWinner() {
+      const winCombos = [
+        [0, 1, 2],
+        [0, 3, 6],
+        [0, 4, 8],
+        [1, 4, 7],
+        [2, 4, 6],
+        [2, 5, 8],
+        [3, 4, 5],
+        [6, 7, 8],
+      ];
+
+      for (let i = 0; i < winCombos.length; i++) {
+        const combo = winCombos[i]; // e.g., [0, 1, 2]
+        const a = combo[0];
+        const b = combo[1];
+        const c = combo[2];
+
+        if (
+          board[a] === currentPlayer &&
+          board[b] === currentPlayer &&
+          board[c] === currentPlayer
+        ) {
+          return true; // currentPlayer has won
+        }
+      }
+      return false; // no win found
+    }
+
+    // winner
+    if (checkWinner()) {
+      alert(`Player ${currentPlayer} wins.`);
+      gameActive = false;
+      return;
+    }
+
+    // draw
+    if (!board.includes("")) {
+      alert("It's a draw!");
+      gameActive = false;
+      return;
+    }
+
+    // Switch player
+    currentPlayer = currentPlayer === "X" ? "O" : "X";
+  });
 }
-
-// winner
-if(checkWinner()){
-    alert(`Player ${currentPlayer} wins.`);
-    gameActive=false;
-    return;
-}
-
-// draw
-if (!board.includes("")) {
-    alert("It's a draw!");
-    gameActive = false;
-    return;
-  }
-
-  // Switch player
-  currentPlayer = currentPlayer === "X" ? "O" : "X";
-}}
