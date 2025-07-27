@@ -53,5 +53,17 @@ for (let i = 0; i < 9; i++) {
   cell.appendChild(cross);
   cross.classList.add("fa-solid","fa-x");
 
-  // cell.addEventListener("mouseover", (){    });
+  cell.addEventListener("mouseover", ()=>{
+    cell.style.backgroundColor="#c39531ff";
+    cell.style.boxShadow="2px 2px 10px #9a7527ff"
+    cell.style.transition="0.5s ease-in";
+    cell.style.color="black";
+  });
+  cell.addEventListener("mouseout", ()=>{
+    cell.style.backgroundColor="#851e1cff";
+    cell.style.transition="0.5s ease-in"
+  cell.style.boxShadow = "2px 2px 10px #943a39ff";
+    cell.style.color="#fff";
+  
+});
 }
