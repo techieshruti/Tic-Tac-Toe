@@ -68,12 +68,14 @@ let player1 ="";
 let player2 ="";
 
 buttonX.addEventListener("click", ()=>{
-    player1 ="X";
-    player2 ="O";
+    const playerChoice = e.target.textContent.toUpperCase();
+    player1 = playerChoice;
+    player2 = playerChoice === "X" ? "X" : "O";
 });
 buttonO.addEventListener("click", ()=>{
-    player1 ="O";
-    player2 ="X";
+    const playerChoice = e.target.textContent.toUpperCase();
+    player1 = playerChoice;
+    player2 = playerChoice === "X" ? "X" : "O";
 });
 
 // buton styles function
@@ -134,6 +136,12 @@ gridBox.style.margin = "3rem";
 gridBox.style.width = "100%";
 gridBox.style.aspectRatio = "1 / 1";
 
+// global variable
+let currentPlayer="player1";
+let board= Array(9).fill("");
+let gameActive= true;
+
+
 // grid cells
 for (let i = 0; i < 9; i++) {
   const cell = document.createElement("div");
@@ -149,13 +157,14 @@ for (let i = 0; i < 9; i++) {
   cell.style.color="#fff";
   cell.style.boxShadow = "2px 2px 10px #943a39ff";
 
-  // icons
+  // icon "O"
   const circle = document.createElement("i");
   cell.appendChild(circle);
   circle.id=circle;
   circle.classList.add("fa-solid","fa-o");
   circle.style.display="none";
 
+  // icon "X"
   const cross = document.createElement("i");
   cell.appendChild(cross);
   cross.id=cross;
@@ -177,12 +186,10 @@ for (let i = 0; i < 9; i++) {
     cell.style.color="#fff";  
 });
 
-// MouseClick Event
-cell.addEventListener("click", ()=>{
-    if(player1 === circle.id){
-        circle.style.display="block";
-    } else{
-        cross.style.display="block";
-    }
-});
+// MouseClick on cell logic
+ const index = i;
+// cells are filled
+// if cells are empty
+if(currentpl)
+
 }
