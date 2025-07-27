@@ -14,6 +14,7 @@ const heading1 = document.createElement("h1");
 container.appendChild(heading1);
 heading1.textContent = "Welcome to TIC-TAC-TOE";
 heading1.style.marginTop = "2rem";
+heading1.style.marginBottom = "1rem";
 heading1.style.fontSize = "3rem";
 
 // =============== start screen ============
@@ -21,8 +22,8 @@ heading1.style.fontSize = "3rem";
  
 const startscreen=document.createElement("div");
 container.appendChild(startscreen);
-startscreen.style.margin="2rem";
-startscreen.style.fontSize="1.3rem"
+startscreen.style.marginLeft="2rem";
+startscreen.style.fontSize="1.5rem"
 // startscreen.style.display="none";
 
 // paragraph
@@ -63,45 +64,36 @@ buttonO.textContent = "O";
 startscreen.appendChild(buttonO);
 styleSymbolButton(buttonO);
 
+// buton styles function
 function styleSymbolButton(btn){
     btn.style.padding="1rem 2rem";
     btn.style.margin="1rem";
-    btn.style.fontSize="1.5rem";
+    btn.style.fontSize="1.2rem";
     btn.style.border="none";
     btn.style.borderRadius="1rem";
     btn.style.cursor="pointer";
     btn.style.backgroundColor="#253d63";
     btn.style.color="#fff";
+    btn.style.boxShadow="1px 1px 15px #1a3766ff";
 
-    
+    btn.addEventListener("mouseover", ()=>{
+        btn.style.backgroundColor = "green";
+        btn.style.transition="0.5s ease-in";
+   btn.style.boxShadow="1px 1px 15px #113f0cff";
+    });
+    btn.addEventListener("mouseout", ()=>{
+        btn.style.backgroundColor = "#253d63";
+        btn.style.transition="0.5s ease-in";
+   btn.style.boxShadow="1px 1px 15px #1a3766ff";
+    });
 }
 
 
 // startgame button
-// const btn=document.createElement("button");
+const btn=document.createElement("button");
 startscreen.appendChild(btn);
 btn.textContent="Start Game";
-btn.style.marginTop="1rem"
-btn.style.padding="1rem 2rem";
-btn.style.fontSize="18px";
-btn.style.borderRadius="1.5rem";
-btn.style.border="none";
-btn.style.backgroundColor="#253d63"
-btn.style.color="#fff";
-btn.style.cursor="pointer";
-btn.style.boxShadow="1px 1px 15px #1a3766ff";
-
-btn.addEventListener("mouseover", ()=>{
-   btn.style.backgroundColor="green";
-   btn.style.transition="0.5s ease-in";
-   btn.style.boxShadow="1px 1px 15px #113f0cff"
-});
-
-btn.addEventListener("mouseout", ()=>{
-   btn.style.backgroundColor="#253d63";
-   btn.style.transition="0.5s ease-in";
-   btn.style.boxShadow="1px 1px 15px #1a3766ff"
-});
+styleSymbolButton(btn);
 
 btn.addEventListener("click", ()=>{
    startscreen.style.display="none"; 
