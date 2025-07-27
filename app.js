@@ -189,7 +189,25 @@ for (let i = 0; i < 9; i++) {
 // MouseClick on cell logic
  const index = i;
 // cells are filled
-// if cells are empty
-if(currentpl)
+if(!gameActive || board[index] !== ""){
+    return;
+}
+    board[index]=currentPlayer;
 
+    // if cells are empty
+if(currentPlayer === "X"){
+    cross.style.display="block";
+}else{
+    circle.style.display="block";
+}
+
+// winning combinations
+const winCombo = [[0,1,2], [0,3,6], [0,4,8], [1,4,7], [2,4,6], [2,5,8], [3,4,5],[6,7,8]];
+
+// winner
+// if(checkWinner()){
+//     alert(`Player ${currentPlayer} wins.`);
+//     gameActive=false;
+//     return;
+// }
 }
