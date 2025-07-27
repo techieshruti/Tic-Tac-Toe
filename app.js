@@ -24,7 +24,7 @@ const startscreen=document.createElement("div");
 container.appendChild(startscreen);
 startscreen.style.marginLeft="2rem";
 startscreen.style.fontSize="1.5rem"
-// startscreen.style.display="none";
+startscreen.style.display="none";
 
 // paragraph
 const para = document.createElement("p");
@@ -64,6 +64,18 @@ buttonO.textContent = "O";
 startscreen.appendChild(buttonO);
 styleSymbolButton(buttonO);
 
+let player1 ="";
+let player2 ="";
+
+buttonX.addEventListener("click", ()=>{
+    player1 ="X";
+    player2 ="O";
+});
+buttonO.addEventListener("click", ()=>{
+    player1 ="O";
+    player2 ="X";
+});
+
 // buton styles function
 function styleSymbolButton(btn){
     btn.style.padding="1rem 2rem";
@@ -88,7 +100,6 @@ function styleSymbolButton(btn){
     });
 }
 
-
 // startgame button
 const btn=document.createElement("button");
 startscreen.appendChild(btn);
@@ -108,10 +119,8 @@ container.appendChild(gameScreen);
 gameScreen.style.width="100%";
 gameScreen.style.height="100vh";
 gameScreen.style.display = "grid";
-gameScreen.style.display = "none";
+// gameScreen.style.display = "none";
 gameScreen.style.justifyContent = "center";
-
-// gameScreen.style.display="none"
 
 // game grid
 const gridBox = document.createElement("div");
@@ -168,10 +177,9 @@ for (let i = 0; i < 9; i++) {
     cell.style.color="#fff";  
 });
 
-let choice=circle.id;
 // MouseClick Event
 cell.addEventListener("click", ()=>{
-    if(choice === circle.id){
+    if(player1 === circle.id){
         circle.style.display="block";
     } else{
         cross.style.display="block";
