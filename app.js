@@ -22,13 +22,13 @@ heading1.style.fontSize = "3rem";
 const startscreen=document.createElement("div");
 container.appendChild(startscreen);
 startscreen.style.margin="2rem";
-startscreen.style.display="none";
+// startscreen.style.display="none";
 
 // paragraph
 const para = document.createElement("p");
 startscreen.appendChild(para);
 para.textContent=" Tic-Tac-Toe is a classic 2-player strategy game where players take turns placing their symbol (X or O) on a 3x3 grid. The goal is to be the first to get three of your symbols in a row — horizontally, vertically, or diagonally.";
-para.style.fontSize="1.8rem"
+para.style.fontSize="1.5rem"
 
 const heading2=document.createElement("h2");
 startscreen.appendChild(heading2);
@@ -39,7 +39,7 @@ heading2.style.margin="1rem 0 1rem 2rem"
 const ruleList =document.createElement("ul");
 startscreen.appendChild(ruleList);
 ruleList.style.fontSize="1.5rem";
-ruleList.style.marginLeft="4rem"
+ruleList.style.margin="0 0 2rem 4rem"
 ruleList.style.lineHeight="2.3rem"
 ruleList.innerHTML=`
 <li>The game is for 2 players.</li>
@@ -49,6 +49,23 @@ ruleList.innerHTML=`
   <li>The first player to align three of their symbols wins the game.</li>
   <li>If all cells are filled without a winner, it's a draw.</li>
 `
+// userchoice
+const inputDiv=document.createElement("div");
+startscreen.appendChild(inputDiv);
+
+const label=document.createElement("label");
+inputDiv.appendChild(label);
+label.textContent="What do you want to choose `X` or `O`? ";
+label.style.fontSize="1.5rem";
+const choice=document.createElement("input");
+inputDiv.appendChild(choice);
+choice.placeholder="Choice";
+choice.style.padding="1rem";
+choice.style.borderRadius="0.5rem";
+choice.style.border="none";
+choice.style.width="5rem"
+
+
 // startgame button
 const btn=document.createElement("button");
 startscreen.appendChild(btn);
@@ -85,17 +102,23 @@ gameScreen.style.display="block";
 
 const gameScreen = document.createElement("div");
 container.appendChild(gameScreen);
+gameScreen.style.width="100%";
+gameScreen.style.height="100vh";
+gameScreen.style.display = "grid";
+gameScreen.style.display = "none";
+gameScreen.style.justifyContent = "center";
+
 // gameScreen.style.display="none"
 
 // game grid
 const gridBox = document.createElement("div");
-container.appendChild(gridBox);
+gameScreen.appendChild(gridBox);
 gridBox.style.display = "grid";
 gridBox.style.gridTemplateColumns = "1fr 1fr 1fr";
 gridBox.style.gridTemplateRows = "1fr 1fr 1fr";
 gridBox.style.gap = "1rem";
 gridBox.style.maxWidth = "300px";
-gridBox.style.margin = "1rem";
+gridBox.style.margin = "3rem";
 gridBox.style.width = "100%";
 gridBox.style.aspectRatio = "1 / 1";
 
