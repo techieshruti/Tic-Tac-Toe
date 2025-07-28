@@ -142,9 +142,7 @@ gridBox.style.width = "100%";
 gridBox.style.aspectRatio = "1 / 1";
 
 // global variable
-let currentPlayer = "player1";
-let board = Array(9).fill("");
-let gameActive = true;
+
 
 // grid cells
 for (let i = 0; i < 9; i++) {
