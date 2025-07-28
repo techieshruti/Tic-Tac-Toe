@@ -242,11 +242,7 @@ for (let i = 0; i < 9; i++) {
     }
 
     // draw
-    if (!board.includes("")) {
-      alert("It's a draw!");
-      gameActive = false;
-      return;
-    }
+   
 
     // Switch player
     currentPlayer = currentPlayer === "X" ? "O" : "X";
