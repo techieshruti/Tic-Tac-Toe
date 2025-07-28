@@ -227,9 +227,7 @@ for (let i = 0; i < 9; i++) {
           board[a] === currentPlayer &&
           board[b] === currentPlayer &&
           board[c] === currentPlayer
-        ) {
-          return true; // currentPlayer has won
-        }
+        ) 
       }
       return false; // no win found
     }
