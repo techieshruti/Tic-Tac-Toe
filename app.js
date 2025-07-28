@@ -249,6 +249,6 @@ for (let i = 0; i < 9; i++) {
     }
 
     // Switch player
-    currentPlayer = currentPlayer === "X" ? "O" : "X";
+    
   });
 }
