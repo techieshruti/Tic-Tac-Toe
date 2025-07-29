@@ -228,14 +228,23 @@ for (let i = 0; i < 9; i++) {
           board[b] === currentPlayer &&
           board[c] === currentPlayer
         ) {
-          return true; // currentPlayer has won
+          
+          return combo; // currentPlayer has won
         }
       }
       return false; // no win found
     }
 
     // winner
-    if (checkWinner()) {
+    const winningCombo = checkWinner();
+    if (winningCombo) {
+  winningCombo.forEach((index) => {
+    const cell = cells[index];
+    cell.style.backgroundColor = "#c39531ff";
+    cell.style.boxShadow = "2px 2px 10px #9a7527ff";
+    cell.style.transition = "0.5s ease-in";
+    cell.style.color = "black";
+  });
       alert(`Player ${currentPlayer} wins.`);
       gameActive = false;
       return;
