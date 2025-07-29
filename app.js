@@ -145,6 +145,7 @@ gridBox.style.aspectRatio = "1 / 1";
 let currentPlayer = "player1";
 let board = Array(9).fill("");
 let gameActive = true;
+let cells = []; // Store all cell elements
 
 // grid cells
 for (let i = 0; i < 9; i++) {
@@ -160,7 +161,8 @@ for (let i = 0; i < 9; i++) {
   cell.style.fontSize = "3rem";
   cell.style.color = "#fff";
   cell.style.boxShadow = "2px 2px 10px #943a39ff";
-
+  cells.push(cell);
+  
   // icon "O"
   const circle = document.createElement("i");
   cell.appendChild(circle);
@@ -244,6 +246,14 @@ for (let i = 0; i < 9; i++) {
     cell.style.boxShadow = "2px 2px 10px #9a7527ff";
     cell.style.transition = "0.5s ease-in";
     cell.style.color = "black";
+
+    // NEW: Style the winning icon too
+  const icon = cell.querySelector("i.fa-x").style.display === "block"
+    ? cell.querySelector("i.fa-x")
+    : cell.querySelector("i.fa-o");
+  icon.style.color = "black";
+  icon.style.transition = "0.5s ease-in";
+  
   });
       alert(`Player ${currentPlayer} wins.`);
       gameActive = false;
