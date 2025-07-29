@@ -240,20 +240,13 @@ for (let i = 0; i < 9; i++) {
     // winner
     const winningCombo = checkWinner();
     if (winningCombo) {
-  winningCombo.forEach((index) => {
+   winningCombo.forEach(index => {
     const cell = cells[index];
     cell.style.backgroundColor = "#c39531ff";
     cell.style.boxShadow = "2px 2px 10px #9a7527ff";
     cell.style.transition = "0.5s ease-in";
     cell.style.color = "black";
-
-    // NEW: Style the winning icon too
-  const icon = cell.querySelector("i.fa-x").style.display === "block"
-    ? cell.querySelector("i.fa-x")
-    : cell.querySelector("i.fa-o");
-  icon.style.color = "black";
-  icon.style.transition = "0.5s ease-in";
-  });
+  })
       alert(`Player ${currentPlayer} wins.`);
       gameActive = false;
       return;
