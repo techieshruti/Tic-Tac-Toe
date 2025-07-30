@@ -99,6 +99,7 @@ function styleSymbolButton(btn) {
     btn.style.transition = "0.5s ease-in";
     btn.style.boxShadow = "1px 1px 15px #113f0cff";
   });
+
   btn.addEventListener("mouseout", () => {
     btn.style.backgroundColor = "#253d63";
     btn.style.transition = "0.5s ease-in";
