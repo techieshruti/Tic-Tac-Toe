@@ -265,8 +265,9 @@ if (winningCombo) {
     cell.style.transition = "0.5s ease-in";
     cell.style.color = "black";
   });
-  gameActive = false; // ✅ Prevent further clicks
   clapSoundPlay();
+  gameActive = false; // ✅ Prevent further clicks
+  
   return;
     }
 
@@ -301,3 +302,30 @@ const resetBtn=document.createElement("button");
 gameScreen.appendChild(resetBtn);
 resetBtn.textContent="Reset Game";
 styleSymbolButton(resetBtn);
+
+resetBtn.addEventListener("click", () => {
+  board = Array(9).fill("");
+  gameActive = true;
+  winningCells = [];
+
+  cells.forEach((cell, index) => {
+    cell.innerHTML = ""; // Clear all icons
+    cell.style.backgroundColor = "#851e1cff";
+    cell.style.boxShadow = "2px 2px 10px #943a39ff";
+    cell.style.color = "#fff";
+
+    // Recreate inner X and O icons
+    const circle = document.createElement("i");
+    circle.classList.add("fa-solid", "fa-o");
+    circle.style.display = "none";
+
+    const cross = document.createElement("i");
+    cross.classList.add("fa-solid", "fa-x");
+    cross.style.display = "none";
+
+    cell.appendChild(circle);
+    cell.appendChild(cross);
+  });
+
+  currentPlayer = player1; // Optional: reset to player 1
+});
