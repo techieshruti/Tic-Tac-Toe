@@ -202,8 +202,10 @@ for (let i = 0; i < 9; i++) {
   // MouseClick on cell logic
   
   cell.addEventListener("click", () => {
-  clickSoundPlay();
+ 
+    clickSoundPlay();
     const index = cells.indexOf(cell);
+    
     // cells are filled
     if (!gameActive || board[index] !== "") {
       return;
@@ -274,10 +276,9 @@ if (!board.includes("")) {
   gameActive = false;
 }
 
-
-    // Switch player
+// Switch player
     currentPlayer = currentPlayer === "X" ? "O" : "X";
-
+ 
   });
 }
 
@@ -299,19 +300,6 @@ gameScreen.appendChild(resetBtn);
 resetBtn.textContent="Reset Game";
 styleSymbolButton(resetBtn);
 
-resetBtn.addEventListener("click", () =>{
+resetBtn.addEventListener("click", () => {
   clickSoundPlay();
-    board = Array.fill(""); // Clear board logic
-  gameActive = true;
-  currentPlayer = player1; // Start with player1 again
-
-  cells.forEach(cell => {
-    cell.textContent = "";
-    cell.style.backgroundColor = "#7a1b1b"; // original color
-    cell.style.boxShadow = "";
-    cell.style.color = "white";
-    cell.classList.remove("no-hover"); // if you use this for disabling hover
-  });
-}
-
-)
+});
