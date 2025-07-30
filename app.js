@@ -195,7 +195,9 @@ for (let i = 0; i < 9; i++) {
 });
 
   // MouseClick on cell logic
+  
   cell.addEventListener("click", () => {
+  clickSoundPlay();
     const index = cells.indexOf(cell);
     // cells are filled
     if (!gameActive || board[index] !== "") {
@@ -255,6 +257,7 @@ if (winningCombo) {
     cell.style.boxShadow = "2px 2px 10px #9a7527ff";
     cell.style.transition = "0.5s ease-in";
     cell.style.color = "black";
+    clapSoundPlay();
   });
 
   const winner = currentPlayer === player1 ? "Player 1" : "Player 2";
@@ -276,4 +279,17 @@ if (winningCombo) {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
 
   });
+}
+
+const clickSound=new Audio("sounds/click.mp3");
+function clickSoundPlay(){
+  clickSound.currentTime=0;
+  clickSound.play();
+}
+
+const drawSound= new Audio("sounds/wrong.mp3");
+const clapSound= new Audio("sounds/clapping.mp3")
+function clapSoundPlay(){
+  clapSound.currentTime=0;
+  clapSound.play();
 }
