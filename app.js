@@ -266,14 +266,11 @@ if (winningCombo) {
   return;
 }
 
-
-
-    // draw
-    if (!board.includes("")) {
-      alert("It's a draw!");
-      gameActive = false;
-      return;
-    }
+// ✅ Check for draw
+if (!board.includes("")) {
+  message.textContent = "It's a Draw!";
+  gameOver = true;
+}
 
     // Switch player
     currentPlayer = currentPlayer === "X" ? "O" : "X";
