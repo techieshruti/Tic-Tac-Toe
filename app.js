@@ -142,7 +142,7 @@ gridBox.style.width = "100%";
 gridBox.style.aspectRatio = "1 / 1";
 
 // global variable
-let currentPlayer = "player1";
+let currentPlayer = player1 || "X";
 let board = Array(9).fill("");
 let gameActive = true;
 let cells = []; // Store all cell elements
@@ -197,7 +197,7 @@ for (let i = 0; i < 9; i++) {
     if (!gameActive || board[index] !== "") {
       return;
     }
-    board[index] = currentPlayer;
+    board[index] = currentPlayer === "X" ? "X" : "O";
 
     // if cells are empty
     if (currentPlayer === "X") {
@@ -247,8 +247,10 @@ for (let i = 0; i < 9; i++) {
     cell.style.transition = "0.5s ease-in";
     cell.style.color = "black";
   })
-      alert(`Player ${currentPlayer} wins.`);
-      gameActive = false;
+  const winner = currentPlayer === player1 ? "Player 1" : "Player 2";
+alert(`${winner} wins as ${currentPlayer}`);
+    
+  gameActive = false;
       return;
     }
 
@@ -261,5 +263,6 @@ for (let i = 0; i < 9; i++) {
 
     // Switch player
     currentPlayer = currentPlayer === "X" ? "O" : "X";
+
   });
 }
