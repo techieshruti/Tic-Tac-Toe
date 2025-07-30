@@ -24,7 +24,7 @@ const startscreen = document.createElement("div");
 container.appendChild(startscreen);
 startscreen.style.marginLeft = "2rem";
 startscreen.style.fontSize = "1.5rem";
-startscreen.style.display = "none";
+// startscreen.style.display = "none";
 
 // paragraph
 const para = document.createElement("p");
@@ -114,6 +114,7 @@ btn.addEventListener("click", () => {
         alert("Please choose your symbol!!")
         return;
     }
+    currentPlayer = player1;
   startscreen.style.display = "none";
   gameScreen.style.display = "block";
 });
@@ -142,7 +143,7 @@ gridBox.style.width = "100%";
 gridBox.style.aspectRatio = "1 / 1";
 
 // global variable
-let currentPlayer = player1 || "X";
+let currentPlayer ="";
 let board = Array(9).fill("");
 let gameActive = true;
 let cells = []; // Store all cell elements
@@ -203,7 +204,7 @@ for (let i = 0; i < 9; i++) {
     if (!gameActive || board[index] !== "") {
       return;
     }
-    board[index] = currentPlayer === "X" ? "X" : "O";
+    board[index] = currentPlayer;
 
     // if cells are empty
     if (currentPlayer === "X") {
@@ -268,9 +269,11 @@ if (winningCombo) {
 
 // ✅ Check for draw
 if (!board.includes("")) {
-  message.textContent = "It's a Draw!";
-  gameOver = true;
+  alert("It's a Draw!"); // ✅ Use alert for consistency
+  drawSound.play();      // Optional
+  gameActive = false;
 }
+
 
     // Switch player
     currentPlayer = currentPlayer === "X" ? "O" : "X";
