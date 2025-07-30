@@ -151,6 +151,7 @@ let currentPlayer ="";
 let board = Array(9).fill("");
 let gameActive = true;
 let cells = []; // Store all cell elements
+let winningCells = [];
 
 // grid cells
 for (let i = 0; i < 9; i++) {
@@ -205,7 +206,6 @@ for (let i = 0; i < 9; i++) {
  
     clickSoundPlay();
     const index = cells.indexOf(cell);
-    
     // cells are filled
     if (!gameActive || board[index] !== "") {
       return;
@@ -252,7 +252,7 @@ for (let i = 0; i < 9; i++) {
     }
 
     // winner
-    let winningCells = [];
+    
 
     const winningCombo = checkWinner();
 if (winningCombo) {
@@ -264,8 +264,9 @@ if (winningCombo) {
     cell.style.boxShadow = "2px 2px 10px #9a7527ff";
     cell.style.transition = "0.5s ease-in";
     cell.style.color = "black";
-    clapSoundPlay();
   });
+  gameActive = false; // ✅ Prevent further clicks
+  clapSoundPlay();
   return;
     }
 
@@ -276,7 +277,8 @@ if (!board.includes("")) {
   gameActive = false;
 }
 
-// Switch player
+
+    // Switch player
     currentPlayer = currentPlayer === "X" ? "O" : "X";
  
   });
@@ -299,7 +301,3 @@ const resetBtn=document.createElement("button");
 gameScreen.appendChild(resetBtn);
 resetBtn.textContent="Reset Game";
 styleSymbolButton(resetBtn);
-
-resetBtn.addEventListener("click", () => {
-  clickSoundPlay();
-});
