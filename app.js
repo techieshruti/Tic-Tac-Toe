@@ -1,7 +1,7 @@
 //container
 const container = document.createElement("div");
 document.body.appendChild(container);
-container.style.backgroundColor = "#c7d6e3ff";
+container.style.backgroundColor = "#ffffffff";
 container.style.width = "100%";
 container.style.height = "100vh";
 container.style.height = "100vh";
@@ -16,6 +16,7 @@ heading1.textContent = "Welcome to TIC-TAC-TOE";
 heading1.style.marginTop = "2rem";
 heading1.style.marginBottom = "1rem";
 heading1.style.fontSize = "3rem";
+heading1.style.color = "#253d63";
 
 // =============== start screen ============
 // =========================================
@@ -266,10 +267,6 @@ if (winningCombo) {
   return;
     }
 
-// const winner = currentPlayer === player1 ? "Player 1" : "Player 2";
-//   alert(`${winner} wins as ${currentPlayer}`);
-//   gameActive = false;
-
 // ✅ Check for draw
 if (!board.includes("")) {
   alert("It's a Draw!"); // ✅ Use alert for consistency
@@ -296,3 +293,25 @@ function clapSoundPlay(){
   clapSound.currentTime=0;
   clapSound.play();
 }
+
+const resetBtn=document.createElement("button");
+gameScreen.appendChild(resetBtn);
+resetBtn.textContent="Reset Game";
+styleSymbolButton(resetBtn);
+
+resetBtn.addEventListener("click", () =>{
+  clickSoundPlay();
+    board = Array.fill(""); // Clear board logic
+  gameActive = true;
+  currentPlayer = player1; // Start with player1 again
+
+  cells.forEach(cell => {
+    cell.textContent = "";
+    cell.style.backgroundColor = "#7a1b1b"; // original color
+    cell.style.boxShadow = "";
+    cell.style.color = "white";
+    cell.classList.remove("no-hover"); // if you use this for disabling hover
+  });
+}
+
+)
