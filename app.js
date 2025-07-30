@@ -184,9 +184,7 @@ for (let i = 0; i < 9; i++) {
   });
   // MouseOut Event
   cell.addEventListener("mouseout", () => {
- if (winningCells.includes(i)) return; // skip resetting if it's a winning cell
-
-    cell.style.backgroundColor = "#851e1cff";
+     cell.style.backgroundColor = "#851e1cff";
     cell.style.transition = "0.5s ease-in";
     cell.style.boxShadow = "2px 2px 10px #943a39ff";
     cell.style.color = "#fff";
@@ -210,6 +208,7 @@ for (let i = 0; i < 9; i++) {
 
     // winning combinations
     function checkWinner() {
+      
       const winCombos = [
         [0, 1, 2],
         [0, 3, 6],
@@ -240,22 +239,27 @@ for (let i = 0; i < 9; i++) {
     }
 
     // winner
+    let winningCells = [];
+
     const winningCombo = checkWinner();
-    if (winningCombo) {
-   winningCombo.forEach(index => {
+if (winningCombo) {
+  winningCells = winningCombo; // Store winning cells globally
+
+  winningCombo.forEach(index => {
     const cell = cells[index];
-    // winningCell.classList.add("winner");
     cell.style.backgroundColor = "#c39531ff";
     cell.style.boxShadow = "2px 2px 10px #9a7527ff";
     cell.style.transition = "0.5s ease-in";
     cell.style.color = "black";
   });
+
   const winner = currentPlayer === player1 ? "Player 1" : "Player 2";
-alert(`${winner} wins as ${currentPlayer}`);
-    
+  alert(`${winner} wins as ${currentPlayer}`);
   gameActive = false;
-      return;
-    }
+  return;
+}
+
+
 
     // draw
     if (!board.includes("")) {
