@@ -192,7 +192,7 @@ for (let i = 0; i < 9; i++) {
 
   // MouseClick on cell logic
   cell.addEventListener("click", () => {
-    const index = i;
+    const index = cells.indexOf(cell);
     // cells are filled
     if (!gameActive || board[index] !== "") {
       return;
