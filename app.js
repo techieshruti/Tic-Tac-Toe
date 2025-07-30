@@ -72,11 +72,13 @@ buttonX.addEventListener("click", (e) => {
   const playerChoice = e.target.textContent.toUpperCase();
   player1 = playerChoice;
   player2 = playerChoice === "X" ? "X" : "O";
+  clickSoundPlay();
 });
 buttonO.addEventListener("click", (e) => {
   const playerChoice = e.target.textContent.toUpperCase();
   player1 = playerChoice;
   player2 = playerChoice === "X" ? "O" : "X";
+  clickSoundPlay();
 });
 
 // buton styles function
@@ -110,6 +112,7 @@ btn.textContent = "Start Game";
 styleSymbolButton(btn);
 
 btn.addEventListener("click", () => {
+  clickSoundPlay();
     if(player1 === "" && player2 === ""){
         alert("Please choose your symbol!!")
         return;
@@ -260,12 +263,12 @@ if (winningCombo) {
     cell.style.color = "black";
     clapSoundPlay();
   });
-
-  const winner = currentPlayer === player1 ? "Player 1" : "Player 2";
-  alert(`${winner} wins as ${currentPlayer}`);
-  gameActive = false;
   return;
-}
+    }
+
+// const winner = currentPlayer === player1 ? "Player 1" : "Player 2";
+//   alert(`${winner} wins as ${currentPlayer}`);
+//   gameActive = false;
 
 // ✅ Check for draw
 if (!board.includes("")) {
