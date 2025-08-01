@@ -266,8 +266,7 @@ if (winningCombo) {
     cell.style.transition = "0.5s ease-in";
     cell.style.color = "black";
   });
-  clapSoundPlay();
-  gameActive = false; // ✅ Prevent further clicks
+  // ✅ Prevent further clicks
   
   return;
     }
