@@ -259,7 +259,13 @@ for (let i = 0; i < 9; i++) {
 if (winningCombo) {
   winningCells = winningCombo; // Store winning cells globally
 
-  
+  winningCombo.forEach(index => {
+    const cell = cells[index];
+    cell.style.backgroundColor = "#c39531ff";
+    cell.style.boxShadow = "2px 2px 10px #9a7527ff";
+    cell.style.transition = "0.5s ease-in";
+    cell.style.color = "black";
+  });
   clapSoundPlay();
   gameActive = false; // ✅ Prevent further clicks
   
