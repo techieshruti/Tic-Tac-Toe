@@ -114,14 +114,13 @@ styleSymbolButton(btn);
 
 btn.addEventListener("click", () => {
   clickSoundPlay();
-    if(player1 === "" && player2 === ""){
-        alert("Please choose your symbol!!")
-        return;
-    }
-    currentPlayer = player1;
+  if (player1 === "" && player2 === "") {
+    alert("Please choose your symbol!!");
+    return;
+  }
+  currentPlayer = player1;
   startscreen.style.display = "none";
   gameScreen.style.display = "block";
-  
 });
 
 // =============== Game screen =============
@@ -132,10 +131,10 @@ container.appendChild(gameScreen);
 gameScreen.style.width = "100%";
 gameScreen.style.height = "100vh";
 gameScreen.style.display = "grid";
-gameScreen.style.justifyItems="center"
+gameScreen.style.justifyItems = "center";
 gameScreen.style.display = "none";
 
-// game grid   
+// game grid
 const gridBox = document.createElement("div");
 gameScreen.appendChild(gridBox);
 gridBox.style.display = "grid";
@@ -148,12 +147,11 @@ gridBox.style.width = "100%";
 gridBox.style.aspectRatio = "1 / 1";
 
 // global variable
-let currentPlayer ="";
+let currentPlayer = "";
 let board = Array(9).fill("");
 let gameActive = true;
 let cells = []; // Store all cell elements
 let winningCells = [];
-
 
 // grid cells
 for (let i = 0; i < 9; i++) {
@@ -170,7 +168,7 @@ for (let i = 0; i < 9; i++) {
   cell.style.color = "#fff";
   cell.style.boxShadow = "2px 2px 10px #943a39ff";
   cells.push(cell);
-  
+
   // icon "O"
   const circle = document.createElement("i");
   cell.appendChild(circle);
@@ -185,27 +183,26 @@ for (let i = 0; i < 9; i++) {
 
   // MouseOver Event
   cell.addEventListener("mouseover", () => {
-  const index = Array.from(cells).indexOf(cell);
-  if (winningCells.includes(index)) return;
-  cell.style.backgroundColor = "#c39531ff";
-  cell.style.boxShadow = "2px 2px 10px #9a7527ff";
-  cell.style.transition = "0.5s ease-in";
-  cell.style.color = "black";
-});
+    const index = Array.from(cells).indexOf(cell);
+    if (winningCells.includes(index)) return;
+    cell.style.backgroundColor = "#c39531ff";
+    cell.style.boxShadow = "2px 2px 10px #9a7527ff";
+    cell.style.transition = "0.5s ease-in";
+    cell.style.color = "black";
+  });
   // MouseOut Event
   cell.addEventListener("mouseout", () => {
-  const index = Array.from(cells).indexOf(cell);
-  if (winningCells.includes(index)) return;
-  cell.style.backgroundColor = "#851e1cff";
-  cell.style.transition = "0.5s ease-in";
-  cell.style.boxShadow = "2px 2px 10px #943a39ff";
-  cell.style.color = "#fff";
-});
+    const index = Array.from(cells).indexOf(cell);
+    if (winningCells.includes(index)) return;
+    cell.style.backgroundColor = "#851e1cff";
+    cell.style.transition = "0.5s ease-in";
+    cell.style.boxShadow = "2px 2px 10px #943a39ff";
+    cell.style.color = "#fff";
+  });
 
   // MouseClick on cell logic
-  
+
   cell.addEventListener("click", () => {
- 
     clickSoundPlay();
     const index = cells.indexOf(cell);
     // cells are filled
@@ -223,7 +220,6 @@ for (let i = 0; i < 9; i++) {
 
     // winning combinations
     function checkWinner() {
-      
       const winCombos = [
         [0, 1, 2],
         [0, 3, 6],
@@ -246,7 +242,6 @@ for (let i = 0; i < 9; i++) {
           board[b] === currentPlayer &&
           board[c] === currentPlayer
         ) {
-          
           return combo; // currentPlayer has won
         }
       }
@@ -254,50 +249,53 @@ for (let i = 0; i < 9; i++) {
     }
 
     // winner
-   const winningCombo = checkWinner();
-if (winningCombo) {
-  winningCells = winningCombo; // Store winning cells globally
+    const winningCombo = checkWinner();
+    if (winningCombo) {
+      winningCells = winningCombo; // Store winning cells globally
 
-  winningCombo.forEach(index => {
-    const cell = cells[index];
-    cell.style.backgroundColor = "#c39531ff";
-    cell.style.boxShadow = "2px 2px 10px #9a7527ff";
-    cell.style.transition = "0.5s ease-in";
-    cell.style.color = "black";
-  });
-  gameActive = false; // ✅ Prevent further clicks
-  clapSoundPlay();
-  return;
+      winningCombo.forEach((index) => {
+        const cell = cells[index];
+        cell.style.backgroundColor = "#c39531ff";
+        cell.style.boxShadow = "2px 2px 10px #9a7527ff";
+        cell.style.transition = "0.5s ease-in";
+        cell.style.color = "black";
+      });
+      gameActive = false; // ✅ Prevent further clicks
+      clapSoundPlay();
+      return;
     }
-
-// ✅ Check for draw
-if (!board.includes("")) {
-  alert("It's a Draw!"); // ✅ Use alert for consistency
-  drawSound.play();      // Optional
-  gameActive = false;
-}
     // Switch player
     currentPlayer = currentPlayer === "X" ? "O" : "X";
- 
+
+    if (!board.includes("") && !winningCombo) {
+      alert("It's a Draw!"); // ✅ Use alert for consistency
+      gameActive = false;
+      drawSound.play();
+    }
   });
 }
 
-const clickSound=new Audio("sounds/click.mp3");
-function clickSoundPlay(){
-  clickSound.currentTime=0;
+const clickSound = new Audio("sounds/click.mp3");
+function clickSoundPlay() {
+  clickSound.currentTime = 0;
   clickSound.play();
 }
 
-const drawSound= new Audio("sounds/wrong.mp3");
-const clapSound= new Audio("sounds/clapping.mp3")
-function clapSoundPlay(){
-  clapSound.currentTime=0;
+const clapSound = new Audio("sounds/clapping.mp3");
+function clapSoundPlay() {
+  clapSound.currentTime = 0;
   clapSound.play();
 }
 
-const resetBtn=document.createElement("button");
+const drawSound = new Audio("sounds/failed.mp3");
+function drawSoundPlay() {
+  drawSound.currentTime = 0;
+  drawSound.play();
+}
+
+const resetBtn = document.createElement("button");
 gameScreen.appendChild(resetBtn);
-resetBtn.textContent="Reset Game";
+resetBtn.textContent = "Reset Game";
 styleSymbolButton(resetBtn);
 
 resetBtn.addEventListener("click", () => {
@@ -309,7 +307,7 @@ resetBtn.addEventListener("click", () => {
   currentPlayer = ""; // Let user choose again
 
   // Reset cell UI
-  cells.forEach(cell => {
+  cells.forEach((cell) => {
     cell.style.backgroundColor = "#851e1cff";
     cell.style.boxShadow = "2px 2px 10px #943a39ff";
     cell.style.color = "#fff";
@@ -337,14 +335,11 @@ restartBtn.addEventListener("click", () => {
   winningCells = [];
 
   // Reset cell UI
-  cells.forEach(cell => {
+  cells.forEach((cell) => {
     cell.style.backgroundColor = "#851e1cff";
     cell.style.boxShadow = "2px 2px 10px #943a39ff";
     cell.style.color = "#fff";
     cell.querySelector(".fa-x").style.display = "none";
     cell.querySelector(".fa-o").style.display = "none";
   });
-
-  // Keep currentPlayer as is (do not go back to start screen)
-  // Game screen stays visible
 });
