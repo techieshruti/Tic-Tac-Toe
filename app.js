@@ -134,7 +134,7 @@ gameScreen.style.display = "grid";
 gameScreen.style.justifyItems="center"
 // gameScreen.style.display = "none";
 
-// game grid
+// game grid   
 const gridBox = document.createElement("div");
 gameScreen.appendChild(gridBox);
 gridBox.style.display = "grid";
@@ -301,6 +301,7 @@ styleSymbolButton(resetBtn);
 
 resetBtn.addEventListener("click", () => {
   // Reset board data
+  clickSoundPlay();
   board = Array(9).fill("");
   gameActive = true;
   winningCells = [];
