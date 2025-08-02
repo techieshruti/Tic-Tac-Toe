@@ -121,6 +121,7 @@ btn.addEventListener("click", () => {
     currentPlayer = player1;
   startscreen.style.display = "none";
   gameScreen.style.display = "block";
+  
 });
 
 // =============== Game screen =============
@@ -132,7 +133,7 @@ gameScreen.style.width = "100%";
 gameScreen.style.height = "100vh";
 gameScreen.style.display = "grid";
 gameScreen.style.justifyItems="center"
-// gameScreen.style.display = "none";
+gameScreen.style.display = "none";
 
 // game grid   
 const gridBox = document.createElement("div");
@@ -319,4 +320,31 @@ resetBtn.addEventListener("click", () => {
   // Show start screen, hide game screen
   startscreen.style.display = "block";
   gameScreen.style.display = "none";
+});
+
+//========================================
+//===========restart game============
+//========================================
+const restartBtn = document.createElement("button");
+gameScreen.appendChild(restartBtn);
+restartBtn.textContent = "Restart Game";
+styleSymbolButton(restartBtn);
+restartBtn.addEventListener("click", () => {
+  clickSoundPlay();
+  // Reset board data
+  board = Array(9).fill("");
+  gameActive = true;
+  winningCells = [];
+
+  // Reset cell UI
+  cells.forEach(cell => {
+    cell.style.backgroundColor = "#851e1cff";
+    cell.style.boxShadow = "2px 2px 10px #943a39ff";
+    cell.style.color = "#fff";
+    cell.querySelector(".fa-x").style.display = "none";
+    cell.querySelector(".fa-o").style.display = "none";
+  });
+
+  // Keep currentPlayer as is (do not go back to start screen)
+  // Game screen stays visible
 });
