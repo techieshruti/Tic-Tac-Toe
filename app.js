@@ -267,6 +267,7 @@ for (let i = 0; i < 9; i++) {
     // Switch player
     currentPlayer = currentPlayer === "X" ? "O" : "X";
 
+    // Check for draw
     if (!board.includes("") && !winningCombo) {
       alert("It's a Draw!"); // ✅ Use alert for consistency
       gameActive = false;
