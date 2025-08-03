@@ -252,7 +252,6 @@ for (let i = 0; i < 9; i++) {
     const winningCombo = checkWinner();
     if (winningCombo) {
       winningCells = winningCombo; // Store winning cells globally
-
       winningCombo.forEach((index) => {
         const cell = cells[index];
         cell.style.backgroundColor = "#c39531ff";
@@ -262,25 +261,69 @@ for (let i = 0; i < 9; i++) {
       });
       gameActive = false; // ✅ Prevent further clicks
       clapSoundPlay();  
+      setTimeout(() => {
+        customAlert(`Player ${currentPlayer} wins!`);
+      }, 1000);
       return;
     }
     
     // Check for draw
     if (board.every((cell) => cell !== "")) {
-      alert("It's a draw! No more moves available.");
       gameActive = false; // ✅ Prevent further clicks
+      
+      // ✅ Defer alert until after DOM paints
+  setTimeout(() => {
+    customAlert("It's a draw! No more moves available.");
+  }, 1000);
       drawSoundPlay();
+      // Highlight all cells
       cells.forEach((cell) => {
-        cell.style.backgroundColor = "#c39531ff";
-        cell.style.boxShadow = "2px 2px 10px #9a7527ff";
-        cell.style.color = "black";
-      });
-       
+        cell.style.backgroundColor = "#5d5d5aff";
+        cell.style.boxShadow = "2px 2px 10px #111111ff";
+        cell.style.color = "white";
+        cell.style.disable = true; // Disable further clicks
+      }); 
     }
 
     // Switch player
     currentPlayer = currentPlayer === "X" ? "O" : "X";
   });
+}
+
+function customAlert(message){
+  // Overlay background
+  const overlay = document.createElement("div");
+  overlay.id = "custom-alert";
+  overlay.style.position = "fixed";
+  overlay.style.top = "0";
+  overlay.style.left = "0";
+  overlay.style.width = "100vw";
+  overlay.style.height = "100vh";
+  overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+  overlay.style.display = "flex";
+  overlay.style.alignItems = "center";
+  overlay.style.justifyContent = "center";
+  overlay.style.zIndex = "999";
+
+// custom alert
+const alertBox = document.createElement("div");
+container.appendChild(alertBox);
+alertBox.style.backgroundColor="#fff"
+alertBox.style.padding="2rem 4rem";
+alertBox.style.textAlign="center";
+alertBox.style.boxShadow = "0 0 15px rgba(0, 0, 0, 0.3)";
+alertBox.style.borderRadius="1rem"
+alertBox.style.fontSize = "1.5rem";
+alertBox.style.color = "#333";
+
+// Dismiss on click
+  alertBox.style.cursor = "pointer";
+  alertBox.addEventListener("click", () => {
+    overlay.remove();
+  });
+
+  overlay.appendChild(alertBox);
+  gameScreen.body.appendChild(overlay);
 }
 
 const clickSound = new Audio("sounds/click.mp3");
@@ -303,7 +346,7 @@ function drawSoundPlay() {
 
 const resetBtn = document.createElement("button");
 gameScreen.appendChild(resetBtn);
-resetBtn.textContent = "Reset Game";
+resetBtn.textContent = "Home Screen";
 styleSymbolButton(resetBtn);
 
 resetBtn.addEventListener("click", () => {
