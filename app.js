@@ -261,18 +261,25 @@ for (let i = 0; i < 9; i++) {
         cell.style.color = "black";
       });
       gameActive = false; // ✅ Prevent further clicks
-      clapSoundPlay();
+      clapSoundPlay();  
       return;
     }
+    
+    // Check for draw
+    if (board.every((cell) => cell !== "")) {
+      alert("It's a draw! No more moves available.");
+      gameActive = false; // ✅ Prevent further clicks
+      drawSoundPlay();
+      cells.forEach((cell) => {
+        cell.style.backgroundColor = "#c39531ff";
+        cell.style.boxShadow = "2px 2px 10px #9a7527ff";
+        cell.style.color = "black";
+      });
+       
+    }
+
     // Switch player
     currentPlayer = currentPlayer === "X" ? "O" : "X";
-
-    // Check for draw
-    if (!board.includes("") && !winningCombo) {
-      alert("It's a Draw!"); // ✅ Use alert for consistency
-      gameActive = false;
-      drawSound.play();
-    }
   });
 }
 
