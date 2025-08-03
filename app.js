@@ -165,6 +165,29 @@ let gameActive = true;
 let cells = []; // Store all cell elements
 let winningCells = [];
 
+// Cursor label
+const cursorLabel = document.createElement("div");
+document.body.appendChild(cursorLabel);
+cursorLabel.style.position = "absolute";
+cursorLabel.style.pointerEvents = "none";
+cursorLabel.style.background = "#253d63";
+cursorLabel.style.color = "#fff";
+cursorLabel.style.padding = "4px 8px";
+cursorLabel.style.fontSize = "0.9rem";
+cursorLabel.style.borderRadius = "6px";
+cursorLabel.style.boxShadow = "0 0 8px rgba(0,0,0,0.3)";
+cursorLabel.style.zIndex = "9999";
+cursorLabel.style.display = "none"; // hide by default
+
+document.addEventListener("mousemove", (e) => {
+  if (!gameActive) return;
+
+  cursorLabel.style.left = e.pageX + 15 + "px";
+  cursorLabel.style.top = e.pageY + 15 + "px";
+  cursorLabel.textContent =
+    currentPlayer === player1 ? player1Name : player2Name;
+  cursorLabel.style.display = "block";
+});
 
 
 // grid cells
