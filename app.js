@@ -167,7 +167,7 @@ let winningCells = [];
 
 // Cursor label
 const cursorLabel = document.createElement("div");
-document.body.appendChild(cursorLabel);
+gameScreen.appendChild(cursorLabel);
 cursorLabel.style.position = "absolute";
 cursorLabel.style.pointerEvents = "none";
 cursorLabel.style.background = "#253d63";
@@ -295,6 +295,7 @@ for (let i = 0; i < 9; i++) {
         cell.style.boxShadow = "2px 2px 10px #9a7527ff";
         cell.style.transition = "0.5s ease-in";
         cell.style.color = "black";
+      cursorLabel.style.display = "none"; // hide cursor label
       });
       gameActive = false; // ✅ Prevent further clicks
       clapSoundPlay();  
