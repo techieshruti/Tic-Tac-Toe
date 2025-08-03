@@ -307,7 +307,8 @@ function customAlert(message){
 
 // custom alert
 const alertBox = document.createElement("div");
-container.appendChild(alertBox);
+overlay.appendChild(alertBox);
+alertBox.textContent = message;
 alertBox.style.backgroundColor="#fff"
 alertBox.style.padding="2rem 4rem";
 alertBox.style.textAlign="center";
@@ -322,8 +323,7 @@ alertBox.style.color = "#333";
     overlay.remove();
   });
 
-  overlay.appendChild(alertBox);
-  gameScreen.body.appendChild(overlay);
+  document.body.appendChild(overlay);
 }
 
 const clickSound = new Audio("sounds/click.mp3");
