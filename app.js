@@ -299,7 +299,10 @@ for (let i = 0; i < 9; i++) {
       gameActive = false; // ✅ Prevent further clicks
       clapSoundPlay();  
       setTimeout(() => {
-        customAlert(`Player ${currentPlayer} wins!`);
+        //player name in alert
+        const playerName = currentPlayer === player1 ? player1Name : player2Name;
+        // ✅ Defer alert until after DOM paints  
+        customAlert(`Player ${playerName} wins!`);
       }, 1000);
       return;
     }
