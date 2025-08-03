@@ -115,7 +115,8 @@ styleSymbolButton(btn);
 btn.addEventListener("click", () => {
   clickSoundPlay();
   if (player1 === "" && player2 === "") {
-    alert("Please choose your symbol!!");
+    drawSoundPlay();
+        customAlert("Please choose your symbol!!");
     return;
   }
   currentPlayer = player1;
