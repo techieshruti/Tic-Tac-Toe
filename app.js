@@ -51,9 +51,20 @@ ruleList.innerHTML = `
   <li>The first player to align three of their symbols wins the game.</li>
   <li>If all cells are filled without a winner, it's a draw.</li>
 `;
+
+//prompt function for user names and replace player 1 with user name
+const player1Name = prompt("Enter Player 1's name:"); 
+const player2Name = prompt("Enter Player 2's name:");
+
+if (player1Name && player2Name) {
+  para.innerHTML = `Welcome <span style="color:#e63946; font-weight: bold;">${player1Name}</span> and <span style="color:#457b9d; font-weight: bold;">${player2Name}</span>! Let's play Tic-Tac-Toe!`;
+} else {
+  para.textContent = "Welcome Player 1 and Player 2! Let's play Tic-Tac-Toe!";
+}
+
 // userchoice
 const userChoiceText = document.createElement("p");
-userChoiceText.textContent = "Player 1: Choose your symbol";
+userChoiceText.textContent = `${player1Name}: Choose your symbol`;
 startscreen.appendChild(userChoiceText);
 
 const buttonX = document.createElement("button");
@@ -153,6 +164,8 @@ let board = Array(9).fill("");
 let gameActive = true;
 let cells = []; // Store all cell elements
 let winningCells = [];
+
+
 
 // grid cells
 for (let i = 0; i < 9; i++) {
