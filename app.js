@@ -189,7 +189,6 @@ document.addEventListener("mousemove", (e) => {
   cursorLabel.style.display = "block";
 });
 
-
 // grid cells
 for (let i = 0; i < 9; i++) {
   const cell = document.createElement("div");
