@@ -411,6 +411,15 @@ homeBtn.addEventListener("click", () => {
   player1 = "";
   player2 = "";
 
+  // Clear board UI
+  cells.forEach((cell) => {
+    cell.style.backgroundColor = "#851e1cff";
+    cell.style.boxShadow = "2px 2px 10px #943a39ff";
+    cell.style.color = "#fff";
+    cell.querySelector(".fa-x").style.display = "none";
+    cell.querySelector(".fa-o").style.display = "none";
+  });
+
 //========================================
 //===========restart game============
 //========================================
