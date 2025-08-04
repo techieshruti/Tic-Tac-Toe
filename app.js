@@ -390,11 +390,11 @@ bottombtns.style.display = "flex";
 bottombtns.style.justifyContent = "center";
 bottombtns.style.width = "100vw";
 
-const resetBtn = document.createElement("button");
-bottombtns.appendChild(resetBtn);
-resetBtn.textContent = "Home Screen";
-resetBtn.style.display = "flex";
-styleSymbolButton(resetBtn);
+const homeBtn = document.createElement("button");
+bottombtns.appendChild(homeBtn);
+homeBtn.textContent = "Home Screen";
+homeBtn.style.display = "flex";
+styleSymbolButton(homeBtn);
 
 //========================================
 //===========restart game============
