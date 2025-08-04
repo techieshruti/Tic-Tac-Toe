@@ -21,7 +21,10 @@ A fully interactive and visually styled **Tic-Tac-Toe (X & O)** game built using
 
 ## 📸 Preview
 
-> ![screenshot or GIF here if available]
+| Main Screen | Main Screen | Game Screen |
+|--------------|-------------|----------------|
+| ![Start](./screenshots/startScreen.PNG) | ![Main](./screenshots/mainScreen.PNG) | ![Game](./screenshots/gameScreen.PNG) |
+
 
 ---
 
@@ -30,7 +33,7 @@ A fully interactive and visually styled **Tic-Tac-Toe (X & O)** game built using
 ```
 tic-tac-toe/
 │
-├── index.html # Main HTML file (if separated)
+├── index.html # Main HTML file
 ├── script.js # Contains all JavaScript code
 ├── sounds/
 │ ├── click.mp3
@@ -74,7 +77,7 @@ tic-tac-toe/
 
 ---
 
-## 🧑‍💻 Author
+## Author
 
 Created by **Shruti Chandra** as a part of a JavaScript learning journey.
 
