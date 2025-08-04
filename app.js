@@ -396,28 +396,6 @@ resetBtn.textContent = "Home Screen";
 resetBtn.style.display = "flex";
 styleSymbolButton(resetBtn);
 
-resetBtn.addEventListener("click", () => {
-  // Reset board data
-  clickSoundPlay();0
-  board = Array(9).fill("");
-  gameActive = true;
-  winningCells = [];
-  currentPlayer = ""; // Let user choose again
-
-  // Reset cell UI
-  cells.forEach((cell) => {
-    cell.style.backgroundColor = "#851e1cff";
-    cell.style.boxShadow = "2px 2px 10px #943a39ff";
-    cell.style.color = "#fff";
-    cell.querySelector(".fa-x").style.display = "none";
-    cell.querySelector(".fa-o").style.display = "none";
-  });
-
-  // Show start screen, hide game screen
-  startscreen.style.display = "block";
-  gameScreen.style.display = "none";
-});
-
 //========================================
 //===========restart game============
 //========================================
