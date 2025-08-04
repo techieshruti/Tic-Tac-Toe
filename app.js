@@ -395,6 +395,21 @@ bottombtns.appendChild(homeBtn);
 homeBtn.textContent = "Home Screen";
 homeBtn.style.display = "flex";
 styleSymbolButton(homeBtn);
+homeBtn.addEventListener("click", () => {
+  clickSoundPlay();
+  // home screen
+  gameScreen.style.display = "none";
+  startscreen.style.display = "block";
+  cursorLabel.style.display = "none";
+});
+
+// Reset board data
+  board = Array(9).fill("");
+  gameActive = true;
+  winningCells = [];
+  currentPlayer = "";
+  player1 = "";
+  player2 = "";
 
 //========================================
 //===========restart game============
