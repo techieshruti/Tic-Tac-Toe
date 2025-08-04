@@ -21,10 +21,13 @@ A fully interactive and visually styled **Tic-Tac-Toe (X & O)** game built using
 
 ## 📸 Preview
 
-| Main Screen | Main Screen | Game Screen |
-|--------------|-------------|----------------|
-| ![Start](./screenshots/startScreen.PNG) | ![Main](./screenshots/mainScreen.PNG) | ![Game](./screenshots/gameScreen.PNG) |
+| Main Screen | Main Screen | 
+|--------------|-------------|
+| ![Start](./screenshots/startScreen.PNG) | ![Main](./screenshots/mainScreen.PNG) | 
 
+| Game Screen |
+|-------------|
+| ![Game](./screenshots/gameScreen.PNG) |
 
 ---
 
