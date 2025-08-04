@@ -30,8 +30,6 @@ startscreen.style.fontSize = "1.5rem";
 // paragraph
 const para = document.createElement("p");
 startscreen.appendChild(para);
-para.textContent =
-  " Tic-Tac-Toe is a classic 2-player strategy game where players take turns placing their symbol (X or O) on a 3x3 grid. The goal is to be the first to get three of your symbols in a row — horizontally, vertically, or diagonally.";
 
 const heading2 = document.createElement("h2");
 startscreen.appendChild(heading2);
@@ -52,9 +50,69 @@ ruleList.innerHTML = `
   <li>If all cells are filled without a winner, it's a draw.</li>
 `;
 
+function customPrompt(message, callback) {
+  // Overlay
+  const overlay = document.createElement("div");
+  overlay.style.position = "fixed";
+  overlay.style.top = "0";
+  overlay.style.left = "0";
+  overlay.style.width = "100vw";
+  overlay.style.height = "100vh";
+  overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+  overlay.style.display = "flex";
+  overlay.style.alignItems = "center";
+  overlay.style.justifyContent = "center";
+  overlay.style.zIndex = "1000";
+
+  // Prompt Box
+  const promptBox = document.createElement("div");
+  promptBox.style.backgroundColor = "#fff";
+  promptBox.style.padding = "2rem";
+  promptBox.style.borderRadius = "1rem";
+  promptBox.style.boxShadow = "0 0 15px rgba(0,0,0,0.3)";
+  promptBox.style.textAlign = "center";
+  promptBox.style.minWidth = "300px";
+
+  const msg = document.createElement("p");
+  msg.textContent = message;
+  msg.style.fontSize = "1.2rem";
+  msg.style.marginBottom = "1rem";
+
+  const input = document.createElement("input");
+  input.type = "text";
+  input.style.padding = "0.7rem";
+  input.style.width = "80%";
+  input.style.fontSize = "1rem";
+  input.style.marginBottom = "1rem";
+  input.style.borderRadius = "0.5rem";
+  input.style.border = "1px solid #ccc";
+
+  const submitBtn = document.createElement("button");
+  submitBtn.textContent = "Submit";
+  submitBtn.style.marginTop = "1rem";
+  styleSymbolButton(submitBtn);
+
+  submitBtn.addEventListener("click", () => {
+    const val = input.value.trim();
+    if (val !== "") {
+      document.body.removeChild(overlay);
+      callback(val);
+    } else {
+      input.style.border = "1px solid red";
+    }
+  });
+
+  promptBox.appendChild(msg);
+  promptBox.appendChild(input);
+  promptBox.appendChild(submitBtn);
+  overlay.appendChild(promptBox);
+  document.body.appendChild(overlay);
+}
+
+
 //prompt function for user names and replace player 1 with user name
-const player1Name = prompt("Enter Player 1's name:"); 
-const player2Name = prompt("Enter Player 2's name:");
+
+
 
 if (player1Name && player2Name) {
   para.innerHTML = `Welcome <span style="color:#e63946; font-weight: bold;">${player1Name}</span> and <span style="color:#457b9d; font-weight: bold;">${player2Name}</span>! Let's play Tic-Tac-Toe!`;
