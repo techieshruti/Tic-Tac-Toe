@@ -123,6 +123,10 @@ customPrompt("Enter Player 1's name:", (name1) => {
   });
 });
 
+function initGame(p1, p2) {
+  para.innerHTML = `Welcome <span style="color:#e63946; font-weight: bold;">${p1}</span> and <span style="color:#457b9d; font-weight: bold;">${p2}</span>! Let's play Tic-Tac-Toe!`;
+  userChoiceText.textContent = `${p1}: Choose your symbol`;
+}
 
 
 if (player1Name && player2Name) {
