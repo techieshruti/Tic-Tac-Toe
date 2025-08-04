@@ -395,23 +395,15 @@ bottombtns.appendChild(homeBtn);
 homeBtn.textContent = "Home Screen";
 homeBtn.style.display = "flex";
 styleSymbolButton(homeBtn);
+
+// Home button functionality
 homeBtn.addEventListener("click", () => {
   clickSoundPlay();
-  // home screen
-  gameScreen.style.display = "none";
-  startscreen.style.display = "block";
-  cursorLabel.style.display = "none";
-});
-
-// Reset board data
+  // Reset board data
   board = Array(9).fill("");
   gameActive = true;
   winningCells = [];
-  currentPlayer = "";
-  player1 = "";
-  player2 = "";
-
-  // Clear board UI
+  // Reset cell UI
   cells.forEach((cell) => {
     cell.style.backgroundColor = "#851e1cff";
     cell.style.boxShadow = "2px 2px 10px #943a39ff";
@@ -419,6 +411,19 @@ homeBtn.addEventListener("click", () => {
     cell.querySelector(".fa-x").style.display = "none";
     cell.querySelector(".fa-o").style.display = "none";
   });
+  // Hide game screen and show start screen
+  gameScreen.style.display = "none";
+  startscreen.style.display = "block";
+  cursorLabel.style.display = "none"; // hide cursor label  
+  // Reset current player
+  currentPlayer = ""; 
+  // Reset player names
+  player1 = "";
+  player2 = "";
+  // Reset user choice text
+  userChoiceText.textContent = `${player1Name}: Choose your symbol`;
+});
+
 
 //========================================
 //===========restart game============
