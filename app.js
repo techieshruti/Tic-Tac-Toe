@@ -384,14 +384,21 @@ function drawSoundPlay() {
   drawSound.play();
 }
 
+const bottombtns = document.createElement("div");
+gameScreen.appendChild(bottombtns);
+bottombtns.style.display = "flex";
+bottombtns.style.justifyContent = "center";
+bottombtns.style.width = "100vw";
+
 const resetBtn = document.createElement("button");
-gameScreen.appendChild(resetBtn);
+bottombtns.appendChild(resetBtn);
 resetBtn.textContent = "Home Screen";
+resetBtn.style.display = "flex";
 styleSymbolButton(resetBtn);
 
 resetBtn.addEventListener("click", () => {
   // Reset board data
-  clickSoundPlay();
+  clickSoundPlay();0
   board = Array(9).fill("");
   gameActive = true;
   winningCells = [];
@@ -415,8 +422,9 @@ resetBtn.addEventListener("click", () => {
 //===========restart game============
 //========================================
 const restartBtn = document.createElement("button");
-gameScreen.appendChild(restartBtn);
+bottombtns.appendChild(restartBtn);
 restartBtn.textContent = "Restart Game";
+restartBtn.style.display = "flex";
 styleSymbolButton(restartBtn);
 restartBtn.addEventListener("click", () => {
   clickSoundPlay();
