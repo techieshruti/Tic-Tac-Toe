@@ -112,6 +112,17 @@ function customPrompt(message, callback) {
 
 //prompt function for user names and replace player 1 with user name
 
+let player1Name = "";
+let player2Name = "";
+
+customPrompt("Enter Player 1's name:", (name1) => {
+  player1Name = name1;
+  customPrompt("Enter Player 2's name:", (name2) => {
+    player2Name = name2;
+    initGame(player1Name, player2Name);
+  });
+});
+
 
 
 if (player1Name && player2Name) {
